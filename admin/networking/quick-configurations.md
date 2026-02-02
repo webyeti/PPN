@@ -53,6 +53,28 @@ $ sudo netplan apply
 
 
 
+### Disable IPv6
+
+Wired:
+
+```
+$ sudo vi /etc/sysctl.conf
+net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.default.disable_ipv6 = 1
+net.ipv6.conf.lo.disable_ipv6 = 1
+$ sudo sudo sysctl -p
+```
+
+Wireless:
+
+```
+$ nmcli connection show
+$ nmcli connection modify "<SSID>" ipv6.method ignore
+$ nmcli connection up "<SSID>"
+```
+
+
+
 
 ## resolvconf
 
